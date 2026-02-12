@@ -1,0 +1,391 @@
+.container {
+  min-height: 100vh;
+  /* CAMBIA ESTO - Fondo más oscuro pero visible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* AGREGAR COCHES ANIMADOS - FÁCIL Y RÁPIDO */
+.container::before {
+  position: absolute;
+  top: 10%;
+  left: -100px;
+  font-size: 4rem;
+  white-space: nowrap;
+  opacity: 0.15;
+  animation: moveCars 20s linear infinite;
+  color: #460806;
+  z-index: 0;
+}
+
+.container::after {
+  content: "🏁🏎️🏁🏎️🏁";
+  position: absolute;
+  bottom: 20%;
+  right: -100px;
+  font-size: 4rem;
+  white-space: nowrap;
+  opacity: 0.15;
+  animation: moveCarsReverse 25s linear infinite;
+  color: #e10600;
+  z-index: 0;
+}
+
+@keyframes moveCars {
+  0% { transform: translateX(0); opacity: 0.1; }
+  50% { opacity: 0.2; }
+  100% { transform: translateX(calc(100vw + 200px)); opacity: 0.1; }
+}
+
+@keyframes moveCarsReverse {
+  0% { transform: translateX(0) rotateY(180deg); opacity: 0.1; }
+  50% { opacity: 0.2; }
+  100% { transform: translateX(calc(-100vw - 200px)) rotateY(180deg); opacity: 0.1; }
+}
+
+/* IMPORTANTE: El contenido debe estar ENCIMA */
+.hero, .calculator, .footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hacer la calculadora MÁS VISIBLE */
+.calculator { /* Más sólido */
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  backdrop-filter: blur(5px); /* Efecto de vidrio */
+}
+
+/* El resto de tu CSS SIGUE IGUAL */
+
+/* VIDEO DE FONDO */
+.videoBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.videoBackground video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8; /* Sube de 0.4 a 0.8 */
+  filter: brightness(1.0) contrast(1.1); /* Más brillo */
+}
+
+/* OVERLAY OSCURO PARA MEJOR LEGIBILIDAD */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: -1;
+}
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(225, 6, 0, 0.5);
+  position: relative;
+}
+
+.f1Logo {
+  background: linear-gradient(45deg, #e10600, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 10px;
+  border-right: 3px solid #fff;
+}
+
+.speedLines {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    #e10600 10px,
+    #e10600 20px
+  );
+  opacity: 0.3;
+  animation: speedLineMove 1s linear infinite;
+}
+
+.calculator {
+
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.racing {
+  animation: raceVibration 0.1s linear infinite;
+}
+.telemetry {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e10600;
+}
+
+.revLights {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.revLight {
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.1s;
+}
+
+.revLight.active {
+  background: #e10600;
+  box-shadow: 0 0 10px #e10600;
+}
+
+.display {
+  background: #0a1a0a;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.display::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #e10600, transparent);
+  animation: scan 2s linear infinite;
+}
+
+.equation {
+  color: #4aff4a;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.5rem;
+  min-height: 20px;
+}
+
+.mainDisplay {
+  color: #0f0;
+  font-size: 2.5rem;
+  font-family: 'Digital', 'Courier New', monospace;
+  text-align: right;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.speedTrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.speedTrap span {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #e10600, #ff6b6b);
+  transition: width 0.3s;
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button {
+  background: #040116;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #444;
+}
+
+.button:hover {
+  background: #3a3a3a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(5, 1, 1, 0.3);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.raceButton {
+  background: #e10600;
+  color: #fff;
+  font-weight: bold;
+}
+
+.raceButton:hover {
+  background: #ff1a1a;
+}
+
+.steeringWheel {
+  background: #444;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.drs {
+  background: #0066cc;
+}
+
+.drs:hover {
+  background: #0088ff;
+}
+
+.footer {
+  margin-top: 3rem;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.tireMarks {
+  width: 100%;
+  height: 20px;
+  background: repeating-linear-gradient(
+    45deg,
+    #333 0px,
+    #333 10px,
+    #444 10px,
+    #444 20px
+  );
+  margin-bottom: 1rem;
+}
+
+.footer p {
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+}
+
+.flag {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 1rem;
+}
+
+.flagGreen, .flagWhite, .flagRed {
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+}
+
+.flagGreen {
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+
+.flagWhite {
+  background: #fff;
+}
+
+.flagRed {
+  background: #ff0000;
+  animation: blink 1s infinite;
+}
+
+@keyframes speedLineMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+@keyframes raceVibration {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .button {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+}
